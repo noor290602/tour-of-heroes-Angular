@@ -5,6 +5,11 @@ import { HeroDetailComponent } from './pages/hero-detail/hero-detail.component';
 
 export const routes: Routes = [
   {
+    path: '',
+    redirectTo: '/dashboard',
+    pathMatch: 'full'
+  },
+  {
     path: 'dashboard',
     component: DashboardComponent
   },
@@ -13,12 +18,7 @@ export const routes: Routes = [
     component: HeroesComponent
   },
   {
-    path: 'herodetail/:id',
+    path: 'detail/:id',
     component: HeroDetailComponent
-  },
-  {
-    path: '**',
-    redirectTo: '/dashboard',
-    pathMatch: 'full'
   }
 ];
