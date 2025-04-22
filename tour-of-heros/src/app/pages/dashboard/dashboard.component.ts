@@ -11,7 +11,7 @@ import { RouterLink } from '@angular/router';
 })
 export class DashboardComponent implements OnInit {
 
-  heroes: Hero[] = [];
+  heroes = signal<Hero[]>([]);
 
   heroService = inject(HeroService);
 
@@ -21,6 +21,6 @@ export class DashboardComponent implements OnInit {
 
   getHeroes(): void {
     this.heroService.getHeroes()
-      .subscribe(heroes => this.heroes = heroes.slice(1, 5)); //cogemos solo los 5 primeros
+      .subscribe(heroes => this.heroes.set(heroes.slice(1, 5))); //cogemos solo los 5 primeros
   }
 }
