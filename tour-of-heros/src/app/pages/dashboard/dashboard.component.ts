@@ -1,6 +1,6 @@
-import { Component, OnInit, signal } from '@angular/core';
+import { Component, inject, OnInit, signal } from '@angular/core';
 import { Hero } from '../../interfaces/hero';
-import { HEROES } from '../../data/heroes.data';
+import { HeroService } from '../../services/hero.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -10,7 +10,16 @@ import { HEROES } from '../../data/heroes.data';
 })
 export class DashboardComponent {
 
-  heroes = signal<Hero[]>(HEROES.slice(1,5));
+  heroes: Hero[] = [];
 
+  heroService = inject(HeroService);
 
+  ngOnInit(): void {
+    this.getHeroes();
+  }
+
+  getHeroes(): void {
+    this.heroService.getHeroes()
+      .subscribe(heroes => this.heroes = heroes.slice(1, 5)); //cogemos solo los 5 primeros
+  }
 }
