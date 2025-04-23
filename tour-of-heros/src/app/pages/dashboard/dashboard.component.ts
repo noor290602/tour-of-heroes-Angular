@@ -2,10 +2,11 @@ import { Component, inject, OnInit, signal } from '@angular/core';
 import { Hero } from '../../interfaces/hero';
 import { HeroService } from '../../services/hero.service';
 import { RouterLink } from '@angular/router';
+import { HeroSearchComponent } from "../../components/hero-search/hero-search.component";
 
 @Component({
   selector: 'app-dashboard',
-  imports: [RouterLink],
+  imports: [RouterLink, HeroSearchComponent],
   templateUrl: './dashboard.component.html',
   styleUrl: './dashboard.component.css'
 })
