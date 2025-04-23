@@ -21,6 +21,6 @@ export class DashboardComponent implements OnInit {
 
   getHeroes(): void {
     this.heroService.getHeroes()
-      .subscribe(heroes => this.heroes.set(heroes.slice(1, 5))); //cogemos solo los 5 primeros
+      .subscribe(heroes => this.heroes.set(heroes.slice(1, 5))); //cogemos solo los 4 primeros
   }
 }

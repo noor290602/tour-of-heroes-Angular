@@ -21,7 +21,6 @@ export class HeroDetailComponent implements OnInit {
   location = inject(Location);
 
   ngOnInit(): void {
-    this.heroService.getHeroes();
     this.getHero();
   }
 
@@ -35,6 +34,13 @@ export class HeroDetailComponent implements OnInit {
 
   goBack(): void {
     this.location.back();
+  }
+
+  save(): void {
+    if (this.hero()) { //si no es undefined
+      this.heroService.updateHero(this.hero()!) //'!' le dice al compilador que this.hero no es null ni undefined en ese punto
+        .subscribe(() => this.goBack());
+    }
   }
 
 }

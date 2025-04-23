@@ -1,12 +1,17 @@
+@if (hero()) {
 <div>
-  @if (hero()) {
-    <h2>{{hero()?.name | uppercase}} Details</h2>
-    <div>id: {{hero()?.id}}</div>
-    <div>
-      <label for="hero-name">Hero name: </label>
-      <input id="hero-name" [value]="hero()?.name" placeholder="name">
-    </div>
-  }
+  <h2>{{ hero()?.name | uppercase }} Details</h2>
+  <div>id: {{ hero()?.id }}</div>
+  <div>
+    <label for="hero-name">Hero name: </label>
+    <input id="hero-name"
+      placeholder="name"
+      [value]="hero()?.name"
+      (input)="hero()!.name = heroClicked.value"
+      #heroClicked  />
+  </div>
 </div>
+}
 
 <button type="button" (click)="goBack()">go back</button>
+<button type="button" (click)="save()">save</button>
